@@ -3,23 +3,35 @@ import {BasePage} from './base-page';
 const locators = {
     footerMsgLBL: 'div[style="text-align: center;"]',
     elementalSeleniumLINK: 'div#page-footer a',
-    forkMeGithubLINK: 'a > img',
+    forkMeGithubBadge: 'a > img',
+    forkMeGihubLINK: 'div.row a',
     closeMsgBTN: 'a.close',
     flashMsgModal:'div#flash',
+    githubUrl: 'https://github.com/saucelabs/the-internet',
+    elementalSeleniumUrl: 'http://elementalselenium.com/',
+
 }
 
 export class CommonPage extends BasePage {
     verifyGithubRepoLink(){
-        this.shouldBeVisible(locators.forkMeGithubLINK);
-                //.click();
+        this.shouldBeVisible(locators.forkMeGithubBadge);
+        cy.get(locators.forkMeGihubLINK)
+        .should('have.attr', 'href').and('include', 'github')
+        .then((href) => {
+            cy.request(href).its('body').should('include', '</html>')
+        })
     }
 
     verifyLoginPageFooter(){
         this.shouldBeVisible(locators.footerMsgLBL);
+
     }
 
     verifyElementalSelLink(){
         this.shouldBeVisible(locators.elementalSeleniumLINK);
+        this.clickOnLink(locators.elementalSeleniumLINK);
+        this.verifyUrl(locators.elementalSeleniumUrl);
+        cy.go('back');
     }
 
     verifyFlashMessage(message, success){

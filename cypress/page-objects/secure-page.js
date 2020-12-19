@@ -2,7 +2,7 @@ import {BasePage} from './base-page';
 import {CommonPage} from './common-page';
 
 const locators = {
-    securePageUrl: 'https://the-internet.herokuapp.com/secure',
+    securePageUrl: Cypress.config().baseUrl + '/secure',
     secureAreaMsgLBL: 'div#flash',
     securePageHeader: '.example h2',
     securePageSubheader: 'h4.subheader',

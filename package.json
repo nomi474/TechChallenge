@@ -1,0 +1,28 @@
+{
+  "name": "techchallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomi474/TechChallenge.git"
+  },
+  "author": "Nauman Sheikh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nomi474/TechChallenge/issues"
+  },
+  "homepage": "https://github.com/nomi474/TechChallenge#readme",
+  "devDependencies": {
+    "cypress": "^6.1.0",
+    "cypress-cucumber-preprocessor": "^4.0.0"
+  },
+  "dependencies": {},
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "commonPath": "cypress/integration/stepdefs"
+  }
+}

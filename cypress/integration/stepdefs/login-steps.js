@@ -32,7 +32,7 @@ And(/^I verify Fork me on github link$/, function(){
 });
 
 And(/^I verify page footer$/, function(){
-    commonPage.verifyLoginPageFooter();
+    commonPage.verifyPageFooter();
 });
 
 And(/^I verify Elemental Selenium link$/, function(){

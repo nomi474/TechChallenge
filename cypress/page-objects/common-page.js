@@ -12,9 +12,12 @@ const locators = {
 
 }
 
+/**
+ * This class contains functions for verifying page elements that are common for multiple pages.
+ */
 export class CommonPage extends BasePage {
     /**
-     * 
+     * Verifies 'Fork me on Github' banner and link
      */
     verifyGithubRepoLink(){
         this.shouldBeVisible(locators.forkMeGithubBadge);
@@ -26,15 +29,15 @@ export class CommonPage extends BasePage {
     }
 
     /**
-     * 
+     * Verifies that the footer exists on the page
      */
-    verifyLoginPageFooter(){
+    verifyPageFooter(){
         this.shouldBeVisible(locators.footerMsgLBL);
 
     }
 
     /**
-     * 
+     * Verifies Elemental Selenium link on the page.
      */
     verifyElementalSelLink(){
         this.shouldBeVisible(locators.elementalSeleniumLINK);
@@ -47,6 +50,9 @@ export class CommonPage extends BasePage {
      * 
      * @param {*} message 
      * @param {*} success 
+     * This function verifies that
+     * a. If login is successful, success message appears on the page with green color background.
+     * b.If login fails, failure message appears on the page with red color background.
      */
     verifyFlashMessage(message, success){
         this.shouldBeVisible(locators.flashMsgModal);

@@ -17,6 +17,9 @@ const locators = {
 
 let commonPage = new CommonPage();
 
+/**
+ * Page object class for Heroku internet Login page
+ */
 export class LoginPage extends BasePage {
     /**
      *  take the user to the home page of the application
@@ -42,70 +45,76 @@ export class LoginPage extends BasePage {
     }
 
     /**
-     * 
+     * verifies existence of label = username on the login page
      */
     verifyUsernamLabel(){
         this.shouldBeVisible(locators.usernameLBL);
     }
 
     /**
-     * 
+     * verifies existence of label = password on the login page
      */
     verifyPassordLabel(){
         this.shouldBeVisible(locators.passwordLBL);
     }
 
     /**
-     * 
+     * This function logs in the user by inputting the user credetials and 
+     * then pressing the Login button.
      */
     login(){
         cy.fixture('account.json').then((userDetail) =>{
-            cy.get(locators.usernameTXT).type(userDetail.username);
-            cy.get(locators.passwordTXT).type(userDetail.password);
+            this.inputText(locators.usernameTXT,userDetail.username);
+            this.inputText(locators.passwordTXT,userDetail.password);
         });
         this.getButton(locators.loginBTN).click();
     }
 
     /**
-     * 
+     * This function verifies that the current url is for the Heroku internet login page
      */
     verifyLoginPageUrl(){
         this.verifyUrl(locators.loginPageUrl);
     }
 
     /**
-     * 
+     * Negative test
      * @param {*} wrongUser 
+     * This function takes wrong user name as input 
      */
     inputWrongUsername(wrongUser){
         cy.fixture('account.json').then((userDetail) =>{
-            cy.get(locators.usernameTXT).type(wrongUser);
-            cy.get(locators.passwordTXT).type(userDetail.password);
+            this.inputText(locators.usernameTXT,wrongUser);
+            this.inputText(locators.passwordTXT,userDetail.password);
         });
         this.getButton(locators.loginBTN).click();
     }
 
     /**
-     * 
+     * This function verifies "invalid username" error message
+     * when incorrect username is provided for logging in
      */
     verifyInvalidUsernameMsg(){
         commonPage.verifyFlashMessage(locators.invalidUsernameMsg, false);
     }
 
 /**
- * 
+ * Negative test
  * @param {*} wrongPasswd 
+ * This function takes wrong user name as input 
  */
     inputWrongPassword(wrongPasswd){
         cy.fixture('account.json').then((userDetail) =>{
-            cy.get(locators.usernameTXT).type(userDetail.username);
-            cy.get(locators.passwordTXT).type(wrongPasswd);
+            this.inputText(locators.usernameTXT,userDetail.username);
+            this.inputText(locators.passwordTXT,wrongPasswd);
+            
         });
         this.getButton(locators.loginBTN).click();
     }
 
-    /**
-     * 
+    /* 
+    * This function verifies "invalid password" error message
+     * when incorrect password is provided for logging in
      */
     verifyInvalidPasswordMsg(){
         commonPage.verifyFlashMessage(locators.invalidPasswordMsg, false);

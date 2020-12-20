@@ -27,6 +27,7 @@ export class BasePage {
    * 
    * @param {*} locator 
    * @param {*} text 
+   * function for inputting text in a text box.
    */
   inputText(locator, text) {
     try {
@@ -39,6 +40,7 @@ export class BasePage {
 /**
  * 
  * @param {*} locator 
+ * function for clicking a page element.
  */
   clickElement(locator) {
     try {
@@ -51,6 +53,7 @@ export class BasePage {
   /**
    * 
    * @param {*} urlText 
+   * This function verifies that the current url is the same as the provided url text.
    */
   verifyUrl(urlText) {
     try {
@@ -63,6 +66,7 @@ export class BasePage {
   /**
    * 
    * @param {*} locator 
+   * Cypress assertion for verifying that an element is visible on the web page.
    */
   shouldBeVisible(locator) {
     cy.get(locator).should('be.visible');
@@ -71,6 +75,7 @@ export class BasePage {
   /**
    * 
    * @param {*} locator 
+   * Cypress assertion for verifying that an element is not visible on the web page.
    */
   shouldNotBeVisible(locator) {
     cy.get(locator).should('not.be.visible');
@@ -79,6 +84,7 @@ export class BasePage {
   /**
    * 
    * @param {*} locator 
+   * returen a button element object
    */
   getButton(locator) {
     return cy.get(locator);

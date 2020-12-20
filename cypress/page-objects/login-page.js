@@ -116,4 +116,13 @@ export class LoginPage extends BasePage {
         commonPage.verifyFlashMessage('Your password is invalid!', false);
     }
 
+    /**
+     * Negative test
+     * This function verifies that incorrect username provided message is shown if
+     * no username or password is provided 
+     */
+    noUsernameOrPassword(){
+        this.getButton(locators.loginBTN).click();
+    }
+
 }

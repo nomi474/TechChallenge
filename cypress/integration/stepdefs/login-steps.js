@@ -86,3 +86,7 @@ And(/^I try to log in with incorrect password$/, function(){
 And(/^I verify invaid password message$/, function(){
     loginPage.verifyInvalidPasswordMsg();
 });
+
+And(/^I click on Login button$/, function(){
+    loginPage.noUsernameOrPassword();
+});

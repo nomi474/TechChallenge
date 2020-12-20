@@ -13,6 +13,9 @@ const locators = {
 }
 
 export class CommonPage extends BasePage {
+    /**
+     * 
+     */
     verifyGithubRepoLink(){
         this.shouldBeVisible(locators.forkMeGithubBadge);
         cy.get(locators.forkMeGihubLINK)
@@ -22,11 +25,17 @@ export class CommonPage extends BasePage {
         })
     }
 
+    /**
+     * 
+     */
     verifyLoginPageFooter(){
         this.shouldBeVisible(locators.footerMsgLBL);
 
     }
 
+    /**
+     * 
+     */
     verifyElementalSelLink(){
         this.shouldBeVisible(locators.elementalSeleniumLINK);
         this.clickOnLink(locators.elementalSeleniumLINK);
@@ -34,6 +43,11 @@ export class CommonPage extends BasePage {
         cy.go('back');
     }
 
+    /**
+     * 
+     * @param {*} message 
+     * @param {*} success 
+     */
     verifyFlashMessage(message, success){
         this.shouldBeVisible(locators.flashMsgModal);
         cy.get(locators.flashMsgModal).contains(message);

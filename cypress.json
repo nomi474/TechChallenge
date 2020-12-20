@@ -2,7 +2,7 @@
     "projectId": "airspace",
     "baseUrl": "https://the-internet.herokuapp.com",
     "env": {
-      "envURL": "the-internet.herokuapp.com/login",
+      "envURL": "the-internet.herokuapp.com",
       "apiURL": ""
     },
     "testFiles": "**/*.feature",

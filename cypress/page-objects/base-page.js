@@ -23,6 +23,11 @@ export class BasePage {
     }
   }
 
+  /**
+   * 
+   * @param {*} locator 
+   * @param {*} text 
+   */
   inputText(locator, text) {
     try {
       cy.get(locator).should('be.enabled').type(text);
@@ -31,6 +36,10 @@ export class BasePage {
     }
   }
 
+/**
+ * 
+ * @param {*} locator 
+ */
   clickElement(locator) {
     try {
       cy.get(locator).should('be.visible').click({ force: true });
@@ -39,6 +48,10 @@ export class BasePage {
     }
   }
 
+  /**
+   * 
+   * @param {*} urlText 
+   */
   verifyUrl(urlText) {
     try {
       cy.url().should('contain', urlText);
@@ -47,14 +60,26 @@ export class BasePage {
     }
   }
 
+  /**
+   * 
+   * @param {*} locator 
+   */
   shouldBeVisible(locator) {
     cy.get(locator).should('be.visible');
   }
 
+  /**
+   * 
+   * @param {*} locator 
+   */
   shouldNotBeVisible(locator) {
     cy.get(locator).should('not.be.visible');
   }
 
+  /**
+   * 
+   * @param {*} locator 
+   */
   getButton(locator) {
     return cy.get(locator);
   }

@@ -8,7 +8,7 @@ const locators = {
     securePageSubheader: 'h4.subheader',
     logoutBTN: 'a[href="/logout"]',
     secureAreaMsg: 'You logged into a secure area!',
-
+    securePageSubHeading: 'Welcome to the Secure Area. When you are done click logout below.'
 };
 
 let commonPage = new CommonPage();
@@ -20,6 +20,7 @@ export class SecurePage extends BasePage {
 
     verifySecureAreaHeader(){
         this.shouldBeVisible(locators.securePageHeader);
+        cy.get(locators.securePageHeader).contains('Secure Area');
     }
 
     verifySecureAreaMessage(){
@@ -28,6 +29,7 @@ export class SecurePage extends BasePage {
 
     verifySecurePageSubHeading(){
         this.shouldBeVisible(locators.securePageSubheader);
+        cy.get(locators.securePageSubheader).contains(locators.securePageSubHeading);
     }
 
     logout(){

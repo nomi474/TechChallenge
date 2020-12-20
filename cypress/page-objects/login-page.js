@@ -5,14 +5,10 @@ const locators = {
     loginPageHeader: '.example h2',
     loginPageMessage: 'h4.subheader',
     usernameLBL: 'label[for="username"]',
-    usernameTXT: 'input#username',
+    usernameTXT: '#username',
     passwordLBL: 'label[for="password"]',
-    passwordTXT: 'input#password',
-    loginBTN: 'button[type="submit"]',
-    loginPageUrl: '/login',
-    invalidPasswordMsg: 'Your password is invalid!',
-    invalidUsernameMsg: 'Your username is invalid!',
-    loginPageHeading: 'Login Page',
+    passwordTXT: '#password',
+    loginBTN: 'button[type="submit"]'
 };
 
 let commonPage = new CommonPage();
@@ -24,8 +20,8 @@ export class LoginPage extends BasePage {
     /**
      *  take the user to the home page of the application
      */
-    gotoHomePage(){
-        cy.visit(locators.loginPageUrl);
+    gotoLoginPage(){
+        cy.visit('/login');
     }
 
     /**
@@ -33,7 +29,7 @@ export class LoginPage extends BasePage {
      */
     verifyLoginPageHeader(){
         this.shouldBeVisible(locators.loginPageHeader);
-        cy.get(locators.loginPageHeader).contains(locators.loginPageHeading);
+        cy.get(locators.loginPageHeader).contains('Login Page');
     }
 
     /**
@@ -74,7 +70,7 @@ export class LoginPage extends BasePage {
      * This function verifies that the current url is for the Heroku internet login page
      */
     verifyLoginPageUrl(){
-        this.verifyUrl(locators.loginPageUrl);
+        this.verifyUrl(Cypress.config().baseUrl + '/login');
     }
 
     /**
@@ -95,7 +91,7 @@ export class LoginPage extends BasePage {
      * when incorrect username is provided for logging in
      */
     verifyInvalidUsernameMsg(){
-        commonPage.verifyFlashMessage(locators.invalidUsernameMsg, false);
+        commonPage.verifyFlashMessage('Your username is invalid!', false);
     }
 
 /**
@@ -117,7 +113,7 @@ export class LoginPage extends BasePage {
      * when incorrect password is provided for logging in
      */
     verifyInvalidPasswordMsg(){
-        commonPage.verifyFlashMessage(locators.invalidPasswordMsg, false);
+        commonPage.verifyFlashMessage('Your password is invalid!', false);
     }
 
 }

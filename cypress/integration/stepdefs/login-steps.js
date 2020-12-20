@@ -8,7 +8,7 @@ let commonPage = new CommonPage();
 let securePage = new SecurePage();
 
 Given(/^I am on Heroku login page$/, function(){
-    loginPage.gotoHomePage();
+    loginPage.gotoLoginPage();
 });
 
 Then(/^I verify page header$/, function(){

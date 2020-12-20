@@ -7,9 +7,6 @@ const locators = {
     forkMeGihubLINK: 'div.row a',
     closeMsgBTN: 'a.close',
     flashMsgModal:'div#flash',
-    githubUrl: 'https://github.com/saucelabs/the-internet',
-    elementalSeleniumUrl: 'http://elementalselenium.com/',
-
 }
 
 /**
@@ -42,7 +39,7 @@ export class CommonPage extends BasePage {
     verifyElementalSelLink(){
         this.shouldBeVisible(locators.elementalSeleniumLINK);
         this.clickOnLink(locators.elementalSeleniumLINK);
-        this.verifyUrl(locators.elementalSeleniumUrl);
+        this.verifyUrl('http://elementalselenium.com/');
         cy.go('back');
     }
 

@@ -2,14 +2,10 @@ import {BasePage} from './base-page';
 import {CommonPage} from './common-page';
 
 const locators = {
-    securePageUrl: Cypress.config().baseUrl + '/secure',
     secureAreaMsgLBL: 'div#flash',
     securePageHeader: '.example h2',
     securePageSubheader: 'h4.subheader',
-    logoutBTN: 'a[href="/logout"]',
-    secureAreaMsg: 'You logged into a secure area!',
-    securePageSubHeading: 'Welcome to the Secure Area. When you are done click logout below.',
-    securePageHeading: 'Secure Area'
+    logoutBTN: 'a[href="/logout"]'
 };
 
 let commonPage = new CommonPage();
@@ -19,7 +15,7 @@ export class SecurePage extends BasePage {
      * Verifies that the user has landed on the Secure page after logging in.
      */
     verifySecurePageUrl(){
-        this.verifyUrl(locators.securePageUrl);
+        this.verifyUrl(Cypress.config().baseUrl + '/secure');
     }
 
     /**
@@ -27,14 +23,14 @@ export class SecurePage extends BasePage {
      */
     verifySecureAreaHeader(){
         this.shouldBeVisible(locators.securePageHeader);
-        cy.get(locators.securePageHeader).contains(locators.securePageHeading);
+        cy.get(locators.securePageHeader).contains('Secure Area');
     }
 
     /**
      * Verifies the successful login message.
      */
     verifySecureAreaMessage(){
-        commonPage.verifyFlashMessage(locators.secureAreaMsg, true);
+        commonPage.verifyFlashMessage('You logged into a secure area!', true);
     }
 
     /**
@@ -42,7 +38,8 @@ export class SecurePage extends BasePage {
      */
     verifySecurePageSubHeading(){
         this.shouldBeVisible(locators.securePageSubheader);
-        cy.get(locators.securePageSubheader).contains(locators.securePageSubHeading);
+        cy.get(locators.securePageSubheader)
+        .contains('Welcome to the Secure Area. When you are done click logout below.');
     }
 
     /**
